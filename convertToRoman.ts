@@ -9,7 +9,7 @@ export default function (n: number): string {
   let collection: number[] = [];
 
   splitedNum.forEach(x => {
-    collection = collection.concat([...getRomanCollection(x)]);
+    collection = collection.concat(getRomanCollection(x));
   });
 
   return collection.map(x => RomanMap[x]).join('');
