@@ -67,13 +67,8 @@ const test = (n: number, place: number): number[] => {
   if (place * 5 === n)
     return [place * 5];
   
-  if (n / Places[placesIndex] === 9) {
-    if (placesIndex === 4) {
-      return [n];
-    }
-
+  if (n / Places[placesIndex] === 9)
     return [place, Places[placesIndex + 1]]
-  }
 
   if (place * 5 < n)
     return [place * 5, ...getRepetition(n / place - (5), place)];
