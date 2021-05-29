@@ -1,5 +1,5 @@
 export default function (n: number): string {
-  if (RomanMap.hasOwnProperty(n))
+  if (Object.hasOwnProperty.call(RomanMap, n))
     return RomanMap[n];
 
   if (4000 <= n)
@@ -43,12 +43,12 @@ const Places:RomanConsts = {
 const getDecimalPlace = (n: number): number => Places[n.toString().length];
 
 const getSplitedNum = (n: number) => {
-  const str                 = n.toString();
-  let collection: number[]  = [];
-  let reverseIndex          = str.length;
+  const str                   = n.toString();
+  const collection: number[]  = [];
+  let reverseIndex            = str.length;
 
   for (let index = 0; index < str.length; index++) {
-    let element = Number(str[index]);
+    const element = Number(str[index]);
     collection.push(element * Number(Places[reverseIndex.toString()]));
     reverseIndex--;
   }
@@ -82,7 +82,7 @@ const test = (n: number, place: number): number[] => {
 }
 
 const getRepetition = (n: number, digit: number) => {
-  let collection: number[] = [];
+  const collection: number[] = [];
   
   if (3 >= n) {
     for (let index = 0; index < n; index++) {
