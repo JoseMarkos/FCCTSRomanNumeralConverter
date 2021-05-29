@@ -52,7 +52,7 @@ const getSplitedNum = (n: number) => {
 
   for (let index = 0; index < str.length; index++) {
     const element = Number(str[index]);
-    collection.push(element * Number(Places[reverseIndex.toString()]));
+    collection.push(element * Number(Places[reverseIndex]));
     reverseIndex--;
   }
 
