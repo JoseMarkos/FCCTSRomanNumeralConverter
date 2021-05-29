@@ -1,14 +1,12 @@
 export default function (n: number): string {
-  if (Object.hasOwnProperty.call(RomanMap, n))
-    return RomanMap[n];
+  if (Object.hasOwnProperty.call(RomanMap, n)) return RomanMap[n];
 
-  if (4000 <= n)
-    return "";
+  if (4000 <= n) return "";
 
-  const splitedNum = getSplitedNum(n);
+  const numCollection = splitByDecimalPlace(n);
   let collection: number[] = [];
 
-  splitedNum.forEach(x => {
+  numCollection.forEach(x => {
     collection = collection.concat(getRomanCollection(x));
   });
 
@@ -45,23 +43,22 @@ Object.freeze(RomanMap);
 
 const getDecimalPlace = (n: number): number => Places[n.toString().length];
 
-const getSplitedNum = (n: number) => {
+const splitByDecimalPlace = (n: number) => {
   const str                   = n.toString();
   const collection: number[]  = [];
   let reverseIndex            = str.length;
 
   for (let index = 0; index < str.length; index++) {
     const element = Number(str[index]);
-    collection.push(element * Number(Places[reverseIndex]));
+    collection.push(element * Places[reverseIndex]);
     reverseIndex--;
   }
 
   return collection;
 }
 
-const getRomanCollection = (n: number): number[] => test(n, getDecimalPlace(n));
-
-const test = (n: number, place: number): number[] => {
+const getRomanCollection = (n: number): number[] => {
+  const place       = getDecimalPlace(n);
   const placesIndex = place.toString().length;
   
   if (place * 4 === n) return [place, place * 5];
@@ -70,16 +67,16 @@ const test = (n: number, place: number): number[] => {
   
   if (n / Places[placesIndex] === 9) return [place, Places[placesIndex + 1]];
 
-  if (place * 5 < n) return [place * 5, ...getRepetition(n / place - (5), place)];
+  if (place * 5 < n) return [place * 5, ...generateDigitCollection(n / place - (5), place)];
   
-  return getRepetition(n / Places[placesIndex], place);
+  return generateDigitCollection(n / Places[placesIndex], place);
 }
 
-const getRepetition = (n: number, digit: number) => {
+const generateDigitCollection = (length: number, digit: number) => {
   const collection: number[] = [];
   
-  if (3 >= n) {
-    for (let index = 0; index < n; index++) {
+  if (3 >= length) {
+    for (let index = 0; index < length; index++) {
       collection.push(digit);
     }
   }
