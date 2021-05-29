@@ -40,6 +40,9 @@ const Places: RomanConsts = {
   "4" : 1000,
 }
 
+Object.freeze(Places);
+Object.freeze(RomanMap);
+
 const getDecimalPlace = (n: number): number => Places[n.toString().length];
 
 const getSplitedNum = (n: number) => {
