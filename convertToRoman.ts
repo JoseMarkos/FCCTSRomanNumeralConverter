@@ -16,14 +16,14 @@ export default function (n: number): string {
 }
 
 interface RomanString {
-  [index: string ] : string
+  [index: string ]: string
 }
 
 interface RomanConsts {
-  [index: string ] : number
+  [index: string ]: number
 }
 
-const RomanMap:RomanString = {
+const RomanMap: RomanString = {
   "1" : "I",
   "5" : "V",
   "10" : "X",
@@ -33,7 +33,7 @@ const RomanMap:RomanString = {
   "1000" : "M",
 }
 
-const Places:RomanConsts = {
+const Places: RomanConsts = {
   "1" : 1,
   "2" : 10,
   "3" : 100,
