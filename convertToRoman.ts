@@ -61,17 +61,13 @@ const getRomanCollection = (n: number): number[] => test(n, getDecimalPlace(n));
 const test = (n: number, place: number): number[] => {
   const placesIndex = place.toString().length;
   
-  if (place * 4 === n)
-    return [place, place * 5];
+  if (place * 4 === n) return [place, place * 5];
 
-  if (place * 5 === n)
-    return [place * 5];
+  if (place * 5 === n) return [place * 5];
   
-  if (n / Places[placesIndex] === 9)
-    return [place, Places[placesIndex + 1]]
+  if (n / Places[placesIndex] === 9) return [place, Places[placesIndex + 1]];
 
-  if (place * 5 < n)
-    return [place * 5, ...getRepetition(n / place - (5), place)];
+  if (place * 5 < n) return [place * 5, ...getRepetition(n / place - (5), place)];
   
   return getRepetition(n / Places[placesIndex], place);
 }
