@@ -3,8 +3,8 @@ export default function (n: number): string {
 
   if (4000 <= n) return "";
 
-  const numCollection = splitByDecimalPlace(n);
-  let collection: number[] = [];
+  const numCollection       = splitByDecimalPlace(n);
+  let collection: number[]  = [];
 
   numCollection.forEach(x => {
     collection = collection.concat(getRomanCollection(x));
@@ -14,11 +14,11 @@ export default function (n: number): string {
 }
 
 interface RomanString {
-  [index: string ]: string
+  readonly [index: string ]: string
 }
 
 interface RomanConsts {
-  [index: string ]: number
+  readonly [index: string ]: number
 }
 
 const RomanMap: RomanString = {
@@ -75,10 +75,10 @@ const getRomanCollection = (n: number): number[] => {
 const generateDigitCollection = (length: number, digit: number) => {
   const collection: number[] = [];
   
-  if (3 >= length) {
-    for (let index = 0; index < length; index++) {
-      collection.push(digit);
-    }
+  if (3 < length) return collection;
+
+  for (let index = 0; index < length; index++) {
+    collection.push(digit);
   }
   
   return collection;
